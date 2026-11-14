@@ -465,7 +465,7 @@ function close(){
  video.pause();video.removeAttribute('src');video.load();
  viewer.hidden=true;document.body.classList.remove('frame-viewer-open');
  fingers.clear();reset();
- if(sourceVideo&&!window.paused){const r=sourceVideo.closest('.scene').getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)sourceVideo.play().catch(()=>{})}
+ if(sourceVideo&&!paused){const r=sourceVideo.closest('.scene').getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)sourceVideo.play().catch(()=>{})}
  if(opener)opener.focus({preventScroll:true});
 }
 document.querySelectorAll('.scene .mobile-frame-open').forEach(b=>b.addEventListener('click',()=>open(b.closest('.scene'),b)));
