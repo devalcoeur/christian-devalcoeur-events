@@ -253,6 +253,21 @@ html[lang="fr"] #page3 .headline,html[lang="en"] #page3 .headline{font-size:clam
   }
   .site-top{z-index:120}
 }
+/* V5.7.1 — First mobile hero: reserve space for the actual fixed navigation height.
+   The V5.7 16:9 video rules remain intact; other scenes and desktop are untouched. */
+@media(max-width:700px){
+  .scene.hero[data-page="1"]{
+    padding-top:calc(var(--v571-mobile-header-height, 136px) + 8px)!important;
+    scroll-margin-top:calc(var(--v571-mobile-header-height, 136px) + 8px);
+  }
+  .scene.hero[data-page="1"] > video{
+    flex:0 0 auto;
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:16/9;
+    object-fit:contain!important;
+  }
+}
 @media(min-width:701px){.mobile-frame-bar{display:none!important}}
 body.frame-viewer-open{overflow:hidden!important}
 .frame-viewer[hidden]{display:none!important}
@@ -506,6 +521,28 @@ document.addEventListener('keydown',e=>{
  if(e.key==='Escape'){e.preventDefault();close()}
  if(e.key==='Tab'){const f=[...viewer.querySelectorAll('button:not([disabled])')];const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
 });
+})();
+</script>
+<script>
+/* V5.7.1: measure the two-row fixed header on small screens, including font
+   loading and viewport changes, instead of relying on a hard-coded offset. */
+(function(){
+  const header=document.querySelector('.site-top');
+  if(!header)return;
+  const mobile=window.matchMedia('(max-width:700px)');
+  const update=()=>{
+    if(!mobile.matches){
+      document.documentElement.style.removeProperty('--v571-mobile-header-height');
+      return;
+    }
+    const height=Math.ceil(header.getBoundingClientRect().height);
+    if(height>0)document.documentElement.style.setProperty('--v571-mobile-header-height',height+'px');
+  };
+  update();
+  if('ResizeObserver' in window)new ResizeObserver(update).observe(header);
+  window.addEventListener('resize',update,{passive:true});
+  if(mobile.addEventListener)mobile.addEventListener('change',update);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
 })();
 </script>
 </body></html>
