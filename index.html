@@ -131,7 +131,81 @@ html[lang="fr"] #page1 .headline,html[lang="en"] #page1 .headline{font-size:clam
 html[lang="fr"] #page3 .headline,html[lang="en"] #page3 .headline{font-size:clamp(34px,4vw,62px)}
 @media(max-width:700px){.site-top{flex-wrap:wrap;gap:6px;align-items:flex-start}.nav{margin-left:auto;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 105px)}.lang-picker{order:-1;margin-right:2px}.nav .lang-picker button{min-width:27px;height:25px;font-size:10px}html[lang="fr"] #page1 .headline,html[lang="en"] #page1 .headline{font-size:clamp(38px,9vw,57px)}}
 @media(max-width:390px){.nav{max-width:calc(100% - 95px)}.nav a,.nav>button{min-width:25px;padding:0 5px}}
-</style></head>
+</style>
+<style>
+/* V5.6 mobile-only refinement — desktop layout untouched */
+@media (max-width: 700px) {
+  html,body{max-width:100%;overflow-x:clip}
+  .site-top{
+    position:fixed;left:0;right:0;top:0;z-index:110;
+    display:flex;flex-direction:column;align-items:stretch;
+    flex-wrap:nowrap;justify-content:flex-start;gap:7px;
+    padding:10px 12px 9px;
+    background:linear-gradient(180deg,rgba(6,5,5,.98),rgba(12,9,7,.92));
+    border-bottom:1px solid rgba(230,193,109,.28);
+    box-shadow:0 9px 25px rgba(0,0,0,.42);
+    pointer-events:auto;
+  }
+  .site-top .brand{
+    display:block;max-width:none;width:100%;
+    font-size:10px;line-height:1.26;letter-spacing:.09em;
+    white-space:normal;text-align:left;
+  }
+  .site-top .nav{
+    display:flex;flex-wrap:nowrap!important;
+    width:100%;max-width:100%!important;min-width:0;
+    margin:0!important;padding:0 0 3px;gap:5px;
+    justify-content:flex-start;align-items:center;
+    overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  }
+  .site-top .nav::-webkit-scrollbar{display:none}
+  .site-top .nav>a,.site-top .nav>button{
+    flex:0 0 auto;min-width:34px;height:35px;
+    padding:0 9px;font-size:12px;white-space:nowrap;
+  }
+  .site-top .nav .lang-picker{
+    order:-1;flex:0 0 auto;
+    margin:0 4px 0 0;padding:3px;
+  }
+  .site-top .nav .lang-picker button{height:29px;min-width:30px;font-size:11px}
+  .site-top .nav .mood-toggle,.site-top .nav .music-stop,
+  .site-top .nav .fullscreen-btn{flex:0 0 35px;width:35px;min-width:35px;height:35px}
+  .mood-panel{top:103px;right:9px;max-height:calc(100dvh - 120px);overflow-y:auto}
+  .scene{min-height:100svh;width:100%;overflow:hidden}
+  .scene .content{width:100%;min-width:0;padding-left:20px;padding-right:20px;padding-bottom:80px}
+  .scene .headline,.scene .gold-heading{
+    max-width:100%;font-size:clamp(31px,8.5vw,44px);
+    line-height:1.09;letter-spacing:0;overflow-wrap:break-word;
+  }
+  .scene .lead{max-width:100%;font-size:clamp(15px,4vw,18px);line-height:1.56}
+  .scene .eyebrow{font-size:10px;line-height:1.5;letter-spacing:.13em}
+  .hero .content{padding-top:max(47svh,315px);padding-bottom:90px}
+  .hero .headline{font-size:clamp(40px,11vw,58px);line-height:1.01}
+  .hero .professions{font-size:clamp(15px,4vw,19px)}
+  .hero .secondary-professions{font-size:clamp(12px,3.5vw,16px)}
+  .scene[data-page="2"] .content{padding-top:max(47svh,300px)}
+  .scene[data-page="2"] .headline{font-size:clamp(34px,9.2vw,47px);line-height:1.03}
+  .scene[data-page="3"]{height:auto;min-height:100svh!important}
+  .scene[data-page="3"] .content{padding-top:133px!important;padding-bottom:105px}
+  .scene[data-page="3"] .headline{font-size:clamp(30px,7.7vw,42px)}
+  .scene[data-page="3"] .three-col,.scene[data-page="3"] .two-col{
+    grid-template-columns:minmax(0,1fr);gap:12px
+  }
+  .scene[data-page="3"] .panel{min-width:0;padding:17px;background:rgba(8,7,8,.83)}
+  .scene[data-page="3"] .panel li,.scene[data-page="3"] .panel p{
+    font-size:14px;line-height:1.58;overflow-wrap:anywhere
+  }
+  .scene[data-page="3"] video{height:100svh;object-fit:cover;object-position:center top}
+  .scene[data-page="4"] .content{padding-top:max(45svh,290px)}
+  .scene[data-page="4"] .headline{font-size:clamp(35px,9vw,47px);line-height:1.06}
+  .scene .buttons{gap:10px}
+  .scene .buttons .cta{max-width:100%;white-space:normal;text-align:center;font-size:12px}
+  .scene .page-indicator{bottom:16px;right:20px}
+  .contact-line{overflow-wrap:anywhere}
+}
+</style>
+</head>
 <body>
 <header class="site-top"><a class="brand" href="#page1">CHRISTIAN DEVALCOEUR<br/>КРИСТИАН ДЕВАЛКЬЕР</a><nav aria-label="Страницы" class="nav"><a href="#page1" title="Представление">01</a><a href="#page2" title="Мероприятия">02</a><a href="#page3" title="Преимущества и контакты">03</a><a href="#page4" title="Новый год">04</a><div aria-label="Выбор языка / Language / Langue" class="lang-picker" role="group"><button aria-label="Русский" aria-pressed="true" data-lang="ru" type="button">RU</button><button aria-label="Français" aria-pressed="false" data-lang="fr" type="button">FR</button><button aria-label="English" aria-pressed="false" data-lang="en" type="button">EN</button></div><button aria-controls="moodPanel" aria-expanded="false" aria-label="Выбрать музыкальное настроение" class="mood-toggle" id="moodToggle" title="Какое у вас настроение?" type="button">♫ <span class="mood-label">Музыка</span></button><button aria-label="Стоп: остановить музыку" class="music-stop" disabled="" id="musicStop" title="Остановить музыку" type="button">■</button><button aria-label="Пауза или воспроизведение видео" id="playToggle" title="Пауза / воспроизведение">Ⅱ</button><button aria-label="На весь экран" class="fullscreen-btn" id="fullscreenToggle" title="На весь экран"><svg aria-hidden="true" fill="none" height="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="19"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"></path></svg></button></nav></header>
 <aside aria-label="Выбор музыкального настроения" class="mood-panel" hidden="" id="moodPanel">
