@@ -205,6 +205,81 @@ html[lang="fr"] #page3 .headline,html[lang="en"] #page3 .headline{font-size:clam
   .contact-line{overflow-wrap:anywhere}
 }
 </style>
+
+<style>
+/* V5.7 Mobile Cinematic — media fits without cropping; desktop untouched */
+@media (max-width:700px){
+  .scene,.scene.hero,.scene.compact,.scene[data-page="3"]{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;
+    min-height:0!important;height:auto!important;overflow:visible!important;
+    background:#100c09;
+  }
+  .scene video{
+    position:relative!important;inset:auto!important;display:block!important;
+    width:100%!important;height:auto!important;aspect-ratio:16/9;
+    object-fit:contain!important;object-position:center center!important;
+    flex:0 0 auto;z-index:0!important;background:#070606;
+  }
+  .scene::before{display:none!important}
+  .scene .content,.hero .content,.scene[data-page="2"] .content,
+  .scene[data-page="3"] .content,.scene[data-page="4"] .content{
+    padding:29px 20px 64px!important;position:relative!important;
+    width:100%;height:auto!important;min-height:0!important;max-width:none!important;
+    background:linear-gradient(130deg,#080706 0%,#24180b 72%,#0c0906 100%);
+  }
+  .scene[data-page="1"] .headline{font-size:clamp(37px,10vw,52px)!important}
+  .scene[data-page="2"] .headline,.scene[data-page="4"] .headline{
+    font-size:clamp(34px,9vw,47px)!important;
+    overflow-wrap:anywhere!important;word-break:normal;
+  }
+  .scene[data-page="3"] .headline{font-size:clamp(31px,8vw,42px)!important}
+  .scene .page-indicator{bottom:14px!important;right:20px!important}
+  .scene .hint{bottom:13px}
+  .scene .three-col,.scene .two-col{grid-template-columns:minmax(0,1fr)!important}
+  .scene .panel{max-width:100%;min-width:0}
+  .scene .lead{max-width:100%}
+  .scene .experience-list{max-width:100%}
+  .mobile-frame-bar{
+    display:flex;align-items:center;justify-content:flex-end;gap:8px;
+    padding:8px 14px;background:#0a0909;
+    border-top:1px solid rgba(217,171,91,.18);
+    border-bottom:1px solid rgba(217,171,91,.25);
+  }
+  .mobile-frame-label{font-size:10px;letter-spacing:.12em;color:#d9be84;margin-right:auto}
+  .mobile-frame-open{
+    appearance:none;display:inline-flex;align-items:center;gap:8px;
+    color:#f8df9f;background:#17120d;border:1px solid #b88d4d;
+    border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer;min-height:36px;
+  }
+  .site-top{z-index:120}
+}
+@media(min-width:701px){.mobile-frame-bar{display:none!important}}
+body.frame-viewer-open{overflow:hidden!important}
+.frame-viewer[hidden]{display:none!important}
+.frame-viewer{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;
+  background:rgba(3,4,8,.985);color:#f9eac4;overscroll-behavior:contain}
+.frame-viewer-head{display:flex;align-items:center;gap:8px;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top) + 10px) 12px 8px;border-bottom:1px solid #b28d4b55;
+  background:#08090e;flex:0 0 auto}
+.frame-viewer-name{font-size:12px;letter-spacing:.08em;color:#e5c688}
+.frame-viewer-actions{display:flex;gap:7px;align-items:center}
+.frame-viewer button{font:inherit;touch-action:manipulation;cursor:pointer}
+.frame-viewer-head button,.frame-viewer-controls button{
+  background:#11141c;color:#eed093;border:1px solid #ae8648;
+  border-radius:8px;min-width:38px;min-height:38px;padding:6px 9px;
+}
+.frame-viewer-stage{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none;
+  background:radial-gradient(ellipse,#142030 0%,#05060a 72%)}
+.frame-viewer-media{position:absolute;width:100%;height:100%;object-fit:contain;
+  transform-origin:center center;will-change:transform;pointer-events:none}
+.frame-viewer-controls{display:flex;justify-content:center;align-items:center;gap:10px;
+  padding:10px 12px calc(env(safe-area-inset-bottom) + 12px);background:#08090e;
+  border-top:1px solid #b28d4b55}
+.frame-viewer-zoom{min-width:46px;text-align:center;font-size:12px;color:#dbc392}
+.frame-viewer-tip{display:block;text-align:center;font-size:11px;color:#bbaf97}
+@media(min-width:701px){.frame-viewer{display:none!important}}
+</style>
 </head>
 <body>
 <header class="site-top"><a class="brand" href="#page1">CHRISTIAN DEVALCOEUR<br/>КРИСТИАН ДЕВАЛКЬЕР</a><nav aria-label="Страницы" class="nav"><a href="#page1" title="Представление">01</a><a href="#page2" title="Мероприятия">02</a><a href="#page3" title="Преимущества и контакты">03</a><a href="#page4" title="Новый год">04</a><div aria-label="Выбор языка / Language / Langue" class="lang-picker" role="group"><button aria-label="Русский" aria-pressed="true" data-lang="ru" type="button">RU</button><button aria-label="Français" aria-pressed="false" data-lang="fr" type="button">FR</button><button aria-label="English" aria-pressed="false" data-lang="en" type="button">EN</button></div><button aria-controls="moodPanel" aria-expanded="false" aria-label="Выбрать музыкальное настроение" class="mood-toggle" id="moodToggle" title="Какое у вас настроение?" type="button">♫ <span class="mood-label">Музыка</span></button><button aria-label="Стоп: остановить музыку" class="music-stop" disabled="" id="musicStop" title="Остановить музыку" type="button">■</button><button aria-label="Пауза или воспроизведение видео" id="playToggle" title="Пауза / воспроизведение">Ⅱ</button><button aria-label="На весь экран" class="fullscreen-btn" id="fullscreenToggle" title="На весь экран"><svg aria-hidden="true" fill="none" height="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="19"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"></path></svg></button></nav></header>
@@ -224,10 +299,10 @@ html[lang="fr"] #page3 .headline,html[lang="en"] #page3 .headline{font-size:clam
 <audio id="soundtrackEnergetic" loop="" preload="none" src="assets/jazz_energetic.mp3"></audio>
 <audio id="soundtrackCalm" loop="" preload="none" src="assets/jazz_calm.mp3"></audio>
 <main>
-<section class="scene hero" data-page="1" id="page1"><video aria-hidden="true" autoplay="" loop="" muted="" playsinline="" preload="metadata"><source src="assets/page1.mp4" type="video/mp4"/></video><div class="content scene-intro"><div class="eyebrow">01 / Premium media kit · Представление</div><h1 class="headline gold-heading">Кристиан<br/>Девалкьер</h1><p class="professions">ВЕДУЩИЙ · MC · ШОУМЕН</p><p class="professions secondary-professions">АКТЁР · СЦЕНАРИСТ · ПЕВЕЦ</p><div class="gold-rule"></div><p class="signature-line">СЦЕНА. ХАРИЗМА. ВПЕЧАТЛЕНИЕ.</p><p class="lead">Многолетний опыт ведения корпоративных, праздничных, клубных и презентационных мероприятий. Телевидение, кино, вокал и авторское шоу усиливают образ и подачу.</p><p class="highlight">РУССКИЙ · FRANÇAIS · ENGLISH</p><div class="buttons"><a class="cta" href="#page2">Опыт и медиа</a><a class="cta alt" href="#page3">Связаться</a></div></div><span class="page-indicator">01 / 04</span></section>
-<section class="scene" data-page="2" id="page2"><video aria-hidden="true" loop="" muted="" playsinline="" preload="none"><source src="assets/page2.mp4" type="video/mp4"/></video><div class="content page2-content"><div class="eyebrow">02 / События · Опыт · Медиа</div><h2 class="headline gold-heading">Золотые<br/>мгновения жизни</h2><p class="lead"><strong>Опыт и медиа, которые усиливают события.</strong></p><div aria-label="Направления" class="experience-list"><span>Музыка и сцена</span><span>Телевидение и кино</span><span>Собственное авторское шоу</span><span>Корпоративные проекты</span></div><div class="buttons"><button aria-controls="experienceDialog" aria-haspopup="dialog" class="cta details-button" id="detailsOpen" type="button">Подробнее об опыте ↗</button><a class="cta alt" href="#page3">Преимущества</a></div></div><span class="page-indicator">02 / 04</span></section>
-<section class="scene compact" data-page="3" id="page3"><video aria-hidden="true" loop="" muted="" playsinline="" preload="none"><source src="assets/page3.mp4" type="video/mp4"/></video><div class="content"><div class="eyebrow">03 / Value · Contacts</div><h2 class="headline gold-heading">Больше, чем просто ведущий</h2><p class="lead">Артистизм, харизма, опыт. Искусство создавать впечатление.</p><div class="three-col"><div class="panel"><h3>Ключевые преимущества</h3><ul><li>Сильная сценическая подача и медийный образ</li><li>Ведение, вокал и авторское шоу в одном артисте</li><li>Опыт корпоративных и праздничных программ</li><li>Телевидение, кино и международные языки</li></ul></div><div class="panel"><h3>Форматы сотрудничества</h3><ul><li>Новогодние корпоративы и сезонные проекты</li><li>Гала-вечера, клубные шоу и церемонии</li><li>Презентации брендов и частные события</li><li>Ведение мероприятия + вокальный блок / авторское шоу</li></ul></div><div class="panel"><h3>Экспертиза и языки</h3><p>Организация мероприятий, сценарии и креативные концепции; арт-дирекшн, продюсирование и опыт работы с клубными и шоу-проектами.</p><p>Французский — родной<br/>Русский — свободно, почти как Пушкин!<br/>Английский — C2</p></div></div><div class="panel" style="margin-top:14px;max-width:1200px"><h3>Творческий подход + сценическая дисциплина</h3><p>Когда нужен не просто ведущий, а яркий артист с харизмой, опытом и медийной подачей — это формат, который помогает событию выделиться.</p><div class="contact-line"><a href="tel:+79660577779">+7 (966) 057-77-79</a><a href="mailto:c.devalcoeur@mail.ru">c.devalcoeur@mail.ru</a><a href="https://t.me/DEVALCOEUR" rel="noopener" target="_blank">Telegram: @DEVALCOEUR</a></div></div></div><span class="page-indicator">03 / 04</span></section>
-<section class="scene" data-page="4" id="page4"><video aria-hidden="true" loop="" muted="" playsinline="" preload="none"><source src="assets/page4.mp4" type="video/mp4"/></video><div class="content"><div class="eyebrow">04 / Christmas · Nouvel An · Новый год</div><h2 class="headline gold-heading">Новогодняя<br/>магия праздника</h2><p class="lead">Праздничные программы, яркие образы и сказочные моменты для детей и взрослых. Тёплые эмоции, вдохновение и настоящее торжество.</p><div class="buttons"><a class="cta" href="https://t.me/DEVALCOEUR" rel="noopener" target="_blank">Обсудить мероприятие</a><a class="cta alt" href="#page1">В начало</a></div><p class="sound-note">Выберите музыкальное настроение кнопкой ♫ в верхнем меню.</p></div><span class="page-indicator">04 / 04</span></section>
+<section class="scene hero" data-page="1" id="page1"><video aria-hidden="true" autoplay="" loop="" muted="" playsinline="" preload="metadata"><source src="assets/page1.mp4" type="video/mp4"/></video><div class="mobile-frame-bar"><span class="mobile-frame-label">16:9 · FULL FRAME</span><button type="button" class="mobile-frame-open" aria-haspopup="dialog" aria-label="Открыть кадр целиком">⛶ <span>Открыть кадр</span></button></div><div class="content scene-intro"><div class="eyebrow">01 / Premium media kit · Представление</div><h1 class="headline gold-heading">Кристиан<br/>Девалкьер</h1><p class="professions">ВЕДУЩИЙ · MC · ШОУМЕН</p><p class="professions secondary-professions">АКТЁР · СЦЕНАРИСТ · ПЕВЕЦ</p><div class="gold-rule"></div><p class="signature-line">СЦЕНА. ХАРИЗМА. ВПЕЧАТЛЕНИЕ.</p><p class="lead">Многолетний опыт ведения корпоративных, праздничных, клубных и презентационных мероприятий. Телевидение, кино, вокал и авторское шоу усиливают образ и подачу.</p><p class="highlight">РУССКИЙ · FRANÇAIS · ENGLISH</p><div class="buttons"><a class="cta" href="#page2">Опыт и медиа</a><a class="cta alt" href="#page3">Связаться</a></div></div><span class="page-indicator">01 / 04</span></section>
+<section class="scene" data-page="2" id="page2"><video aria-hidden="true" loop="" muted="" playsinline="" preload="none"><source src="assets/page2.mp4" type="video/mp4"/></video><div class="mobile-frame-bar"><span class="mobile-frame-label">16:9 · FULL FRAME</span><button type="button" class="mobile-frame-open" aria-haspopup="dialog" aria-label="Открыть кадр целиком">⛶ <span>Открыть кадр</span></button></div><div class="content page2-content"><div class="eyebrow">02 / События · Опыт · Медиа</div><h2 class="headline gold-heading">Золотые<br/>мгновения жизни</h2><p class="lead"><strong>Опыт и медиа, которые усиливают события.</strong></p><div aria-label="Направления" class="experience-list"><span>Музыка и сцена</span><span>Телевидение и кино</span><span>Собственное авторское шоу</span><span>Корпоративные проекты</span></div><div class="buttons"><button aria-controls="experienceDialog" aria-haspopup="dialog" class="cta details-button" id="detailsOpen" type="button">Подробнее об опыте ↗</button><a class="cta alt" href="#page3">Преимущества</a></div></div><span class="page-indicator">02 / 04</span></section>
+<section class="scene compact" data-page="3" id="page3"><video aria-hidden="true" loop="" muted="" playsinline="" preload="none"><source src="assets/page3.mp4" type="video/mp4"/></video><div class="mobile-frame-bar"><span class="mobile-frame-label">16:9 · FULL FRAME</span><button type="button" class="mobile-frame-open" aria-haspopup="dialog" aria-label="Открыть кадр целиком">⛶ <span>Открыть кадр</span></button></div><div class="content"><div class="eyebrow">03 / Value · Contacts</div><h2 class="headline gold-heading">Больше, чем просто ведущий</h2><p class="lead">Артистизм, харизма, опыт. Искусство создавать впечатление.</p><div class="three-col"><div class="panel"><h3>Ключевые преимущества</h3><ul><li>Сильная сценическая подача и медийный образ</li><li>Ведение, вокал и авторское шоу в одном артисте</li><li>Опыт корпоративных и праздничных программ</li><li>Телевидение, кино и международные языки</li></ul></div><div class="panel"><h3>Форматы сотрудничества</h3><ul><li>Новогодние корпоративы и сезонные проекты</li><li>Гала-вечера, клубные шоу и церемонии</li><li>Презентации брендов и частные события</li><li>Ведение мероприятия + вокальный блок / авторское шоу</li></ul></div><div class="panel"><h3>Экспертиза и языки</h3><p>Организация мероприятий, сценарии и креативные концепции; арт-дирекшн, продюсирование и опыт работы с клубными и шоу-проектами.</p><p>Французский — родной<br/>Русский — свободно, почти как Пушкин!<br/>Английский — C2</p></div></div><div class="panel" style="margin-top:14px;max-width:1200px"><h3>Творческий подход + сценическая дисциплина</h3><p>Когда нужен не просто ведущий, а яркий артист с харизмой, опытом и медийной подачей — это формат, который помогает событию выделиться.</p><div class="contact-line"><a href="tel:+79660577779">+7 (966) 057-77-79</a><a href="mailto:c.devalcoeur@mail.ru">c.devalcoeur@mail.ru</a><a href="https://t.me/DEVALCOEUR" rel="noopener" target="_blank">Telegram: @DEVALCOEUR</a></div></div></div><span class="page-indicator">03 / 04</span></section>
+<section class="scene" data-page="4" id="page4"><video aria-hidden="true" loop="" muted="" playsinline="" preload="none"><source src="assets/page4.mp4" type="video/mp4"/></video><div class="mobile-frame-bar"><span class="mobile-frame-label">16:9 · FULL FRAME</span><button type="button" class="mobile-frame-open" aria-haspopup="dialog" aria-label="Открыть кадр целиком">⛶ <span>Открыть кадр</span></button></div><div class="content"><div class="eyebrow">04 / Christmas · Nouvel An · Новый год</div><h2 class="headline gold-heading">Новогодняя<br/>магия праздника</h2><p class="lead">Праздничные программы, яркие образы и сказочные моменты для детей и взрослых. Тёплые эмоции, вдохновение и настоящее торжество.</p><div class="buttons"><a class="cta" href="https://t.me/DEVALCOEUR" rel="noopener" target="_blank">Обсудить мероприятие</a><a class="cta alt" href="#page1">В начало</a></div><p class="sound-note">Выберите музыкальное настроение кнопкой ♫ в верхнем меню.</p></div><span class="page-indicator">04 / 04</span></section>
 </main>
 <div class="details-overlay" hidden="" id="detailsOverlay">
 <section aria-labelledby="detailsTitle" aria-modal="true" class="details-dialog" id="experienceDialog" role="dialog" tabindex="-1">
@@ -241,6 +316,26 @@ html[lang="fr"] #page3 .headline,html[lang="en"] #page3 .headline{font-size:clam
 <div class="details-section"><h3>Связаться</h3><p>Обсудим формат, задачи и атмосферу вашего события.</p><div class="details-contact"><a href="tel:+79660577779">+7 (966) 057-77-79</a><a href="mailto:c.devalcoeur@mail.ru">c.devalcoeur@mail.ru</a><a href="https://t.me/DEVALCOEUR" rel="noopener" target="_blank">Telegram: @DEVALCOEUR</a></div></div>
 </div>
 </section>
+</div>
+<div id="frameViewer" class="frame-viewer" hidden aria-modal="true" role="dialog" aria-label="Просмотр полного кадра" tabindex="-1">
+  <div class="frame-viewer-head">
+    <span class="frame-viewer-name">CHRISTIAN DEVALCOEUR · <span id="frameViewerNumber">01 / 04</span></span>
+    <div class="frame-viewer-actions">
+      <button id="frameViewerFullscreen" type="button" aria-label="Полноэкранный режим">⛶</button>
+      <button id="frameViewerClose" type="button" aria-label="Закрыть просмотр">✕</button>
+    </div>
+  </div>
+  <div class="frame-viewer-stage" id="frameViewerStage" aria-label="Двумя пальцами увеличьте кадр, одним переместите">
+    <video class="frame-viewer-media" id="frameViewerVideo" playsinline muted loop preload="metadata"></video>
+  </div>
+  <div class="frame-viewer-controls">
+    <button type="button" id="frameViewerMinus" aria-label="Уменьшить">−</button>
+    <span class="frame-viewer-zoom" id="frameViewerScale">100%</span>
+    <button type="button" id="frameViewerPlus" aria-label="Увеличить">＋</button>
+    <button type="button" id="frameViewerReset" aria-label="Показать весь кадр">⤢</button>
+    <button type="button" id="frameViewerPause" aria-label="Пауза или воспроизведение">Ⅱ</button>
+  </div>
+  <span class="frame-viewer-tip">Два пальца — масштаб · Один палец — перемещение · Двойное касание — увеличение</span>
 </div>
 <script>
 const videos=[...document.querySelectorAll('.scene video')], links=[...document.querySelectorAll('.nav a')];let paused=false;const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{const video=e.target.querySelector('video');if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id));if(!paused)video.play().catch(()=>{});}else video.pause()})},{threshold:.35});document.querySelectorAll('.scene').forEach(s=>observer.observe(s));document.getElementById('playToggle').addEventListener('click',e=>{paused=!paused;e.currentTarget.textContent=paused?'▶':'Ⅱ';e.currentTarget.setAttribute('aria-label',paused?'Воспроизвести видео':'Приостановить видео');videos.forEach(v=>{if(paused)v.pause();else if(v.closest('.scene').getBoundingClientRect().top<innerHeight*.7&&v.closest('.scene').getBoundingClientRect().bottom>innerHeight*.3)v.play().catch(()=>{})})});
@@ -322,4 +417,95 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
 let start='ru';try{const saved=sessionStorage.getItem('cd-language');if(attrs[saved])start=saved}catch(e){}
 setLang(start);
 })();
-</script></body></html>
+</script>
+<script>
+/* V5.7 Mobile Cinematic Viewer — responsive, pinch/pan/double-tap, full fit */
+(()=>{
+const viewer=document.getElementById('frameViewer');
+const stage=document.getElementById('frameViewerStage');
+const video=document.getElementById('frameViewerVideo');
+const number=document.getElementById('frameViewerNumber');
+const zoomLabel=document.getElementById('frameViewerScale');
+const closeBtn=document.getElementById('frameViewerClose');
+const playBtn=document.getElementById('frameViewerPause');
+let opener=null,sourceVideo=null,scale=1,offsetX=0,offsetY=0,lastTap=0,moveStarted=false;
+const fingers=new Map();
+let startMid=null,startDistance=0,startScale=1,startOffsetX=0,startOffsetY=0;
+const maxScale=3;
+function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
+function bound(){
+ const rect=stage.getBoundingClientRect();
+ const ratio=(video.videoWidth&&video.videoHeight)?video.videoWidth/video.videoHeight:16/9;
+ let w=rect.width,h=w/ratio;
+ if(h>rect.height){h=rect.height;w=h*ratio}
+ offsetX=clamp(offsetX,-Math.max(0,(w*scale-rect.width)/2),Math.max(0,(w*scale-rect.width)/2));
+ offsetY=clamp(offsetY,-Math.max(0,(h*scale-rect.height)/2),Math.max(0,(h*scale-rect.height)/2));
+}
+function render(){bound();video.style.transform='translate('+offsetX+'px,'+offsetY+'px) scale('+scale+')';zoomLabel.textContent=Math.round(scale*100)+'%'}
+function setScale(n){scale=clamp(n,1,maxScale);if(scale===1){offsetX=0;offsetY=0}render()}
+function reset(){scale=1;offsetX=offsetY=0;render()}
+function pointerMid(){
+ const pts=[...fingers.values()];
+ return {x:(pts[0].x+pts[1].x)/2,y:(pts[0].y+pts[1].y)/2,dist:Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y)};
+}
+function open(scene,button){
+ if(!window.matchMedia('(max-width:700px)').matches)return;
+ opener=button;sourceVideo=scene.querySelector('video');reset();
+ const src=sourceVideo.currentSrc||sourceVideo.querySelector('source')?.getAttribute('src');
+ if(!src)return;
+ number.textContent=String(scene.dataset.page).padStart(2,'0')+' / 04';
+ video.src=src;video.muted=true;video.currentTime=sourceVideo.currentTime||0;
+ sourceVideo.pause();viewer.hidden=false;document.body.classList.add('frame-viewer-open');
+ closeBtn.focus({preventScroll:true});video.play().then(()=>{playBtn.textContent='Ⅱ'}).catch(()=>{playBtn.textContent='▶'});
+ requestAnimationFrame(render);
+}
+function close(){
+ if(viewer.hidden)return;
+ if(document.fullscreenElement===viewer&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+ video.pause();video.removeAttribute('src');video.load();
+ viewer.hidden=true;document.body.classList.remove('frame-viewer-open');
+ fingers.clear();reset();
+ if(sourceVideo&&!paused){const r=sourceVideo.closest('.scene').getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)sourceVideo.play().catch(()=>{})}
+ if(opener)opener.focus({preventScroll:true});
+}
+document.querySelectorAll('.scene .mobile-frame-open').forEach(b=>b.addEventListener('click',()=>open(b.closest('.scene'),b)));
+closeBtn.addEventListener('click',close);
+document.getElementById('frameViewerPlus').addEventListener('click',()=>setScale(scale+.25));
+document.getElementById('frameViewerMinus').addEventListener('click',()=>setScale(scale-.25));
+document.getElementById('frameViewerReset').addEventListener('click',reset);
+playBtn.addEventListener('click',()=>{if(video.paused)video.play().then(()=>playBtn.textContent='Ⅱ').catch(()=>{});else{video.pause();playBtn.textContent='▶'}});
+document.getElementById('frameViewerFullscreen').addEventListener('click',()=>{
+ try{if(document.fullscreenElement===viewer)document.exitFullscreen?.();else viewer.requestFullscreen?.().catch(()=>{})}catch(e){}
+});
+stage.addEventListener('pointerdown',e=>{
+ if(viewer.hidden)return;stage.setPointerCapture(e.pointerId);
+ fingers.set(e.pointerId,{x:e.clientX,y:e.clientY});moveStarted=false;
+ if(fingers.size===2){const m=pointerMid();startMid=m;startDistance=m.dist;startScale=scale;startOffsetX=offsetX;startOffsetY=offsetY;}
+ else if(fingers.size===1){startOffsetX=offsetX;startOffsetY=offsetY;}
+});
+stage.addEventListener('pointermove',e=>{
+ if(!fingers.has(e.pointerId))return;
+ const previous=fingers.get(e.pointerId);
+ fingers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ if(Math.hypot(e.clientX-previous.x,e.clientY-previous.y)>1)moveStarted=true;
+ if(fingers.size===2&&startMid){const m=pointerMid();scale=clamp(startScale*m.dist/Math.max(1,startDistance),1,maxScale);offsetX=startOffsetX+(m.x-startMid.x);offsetY=startOffsetY+(m.y-startMid.y);}
+ else if(fingers.size===1&&scale>1){offsetX+=e.clientX-previous.x;offsetY+=e.clientY-previous.y}
+ render();
+});
+function endPointer(e){fingers.delete(e.pointerId);if(fingers.size===1){const p=[...fingers.values()][0];startMid=null;startOffsetX=offsetX;startOffsetY=offsetY;}else startMid=null}
+stage.addEventListener('pointerup',endPointer);stage.addEventListener('pointercancel',endPointer);
+stage.addEventListener('dblclick',()=>setScale(scale>1?1:2));
+stage.addEventListener('click',e=>{
+ if(moveStarted||fingers.size)return;
+ if(e.detail>1)return;
+ const now=Date.now();if(now-lastTap<300){setScale(scale>1?1:2);lastTap=0}else lastTap=now;
+});
+window.addEventListener('resize',()=>{if(!viewer.hidden)render()});
+document.addEventListener('keydown',e=>{
+ if(viewer.hidden)return;
+ if(e.key==='Escape'){e.preventDefault();close()}
+ if(e.key==='Tab'){const f=[...viewer.querySelectorAll('button:not([disabled])')];const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
+});
+})();
+</script>
+</body></html>
